@@ -9,7 +9,8 @@ import WordList from './WordList';
 function MainTable() {
 
   const [data, setData] = useState();
-  
+  const [isCheck, setIsCheck] = useState(false);
+
   useEffect(()=>{
     fetch('http://localhost:3001/words')
     .then(res=>res.json())
@@ -18,7 +19,7 @@ function MainTable() {
       setData(data)
     })
     .catch(err=>console.log(err));
-  },[]);
+  },[isCheck]);
 
   return (
     <Table striped bordered hover>
@@ -37,10 +38,11 @@ function MainTable() {
             <WordList
               key={word.id}
               word={word}
+              isCheck={isCheck}
+              setIsCheck={setIsCheck}
             />
-          ))
+          )) 
         }
-       
       </tbody>
     </Table>
   );
