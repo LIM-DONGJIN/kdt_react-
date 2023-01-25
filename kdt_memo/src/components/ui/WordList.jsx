@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Forms from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {BASE_URL} from '../../env.js'
 
 function WordList({word, isCheck, setIsCheck}) {
 
@@ -11,7 +12,8 @@ function WordList({word, isCheck, setIsCheck}) {
   }
 
   const handleCheck = () => {
-    fetch(`http://localhost:3001/words/${word.id}`, {
+    console.log(BASE_URL);
+    fetch(`${BASE_URL}/words/${word.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
