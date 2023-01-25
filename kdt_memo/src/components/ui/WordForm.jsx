@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 function WordForm() {
 
+  const navigate = useNavigate();
+
   // 단어 추가를 위한 객체 생성
   const [word, setWord] = useState(
     {
-      id: 0,
+      // id: 0,
       day: 1,
       eng: "",
       kor: "",
@@ -30,14 +33,14 @@ function WordForm() {
     // 페이지 새로고침 방지
     e.preventDefault();
     // 기존 아이디의 마지막 번호 찾기
-    let getId = 0;
-    fetch('http://localhost:3001/words')
-    .then(res=>res.json())
-    .then(data => {
-      console.log(data);
-      getId = data[data.length-1].id
-    })
-    .catch(err=>console.log(err));
+    // let getId = 0;
+    // fetch('http://localhost:3001/words')
+    // .then(res=>res.json())
+    // .then(data => {
+    //   console.log(data);
+    //   getId = data[data.length-1].id
+    // })
+    // .catch(err=>console.log(err));
     // 새로운 단어 추가
     fetch('http://localhost:3001/words', {
       method: 'POST',
@@ -45,10 +48,15 @@ function WordForm() {
         'Content-Type': 'application/json'
       }, 
       body: JSON.stringify({
-        ...word, id : getId+1
+        day: word.day,
+        eng: word.eng,
+        kor: word.kor,
+        isDone: word.isDone
       })
     }).then(res => {
       console.log(res);
+      alert("단어가 추가되었습니다.")
+      navigate("/");
     }).catch(err => console.log(err));
   }
 

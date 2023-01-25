@@ -75,7 +75,7 @@
       "day": 1,
       "eng": "strawberry",
       "kor": "딸기",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 6,
@@ -125,6 +125,27 @@
       "eng": "mango",
       "kor": "망고",
       "isDone": false
+    },
+    {
+      "day": 1,
+      "eng": "Book",
+      "kor": "책",
+      "isDone": false,
+      "id": 13
+    },
+    {
+      "day": 1,
+      "eng": "Flower",
+      "kor": "꽃",
+      "isDone": false,
+      "id": 14
+    },
+    {
+      "day": 1,
+      "eng": "Bottle",
+      "kor": "병",
+      "isDone": false,
+      "id": 15
     }
   ]
 }
