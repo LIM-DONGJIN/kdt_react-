@@ -1,6 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Table from 'react-bootstrap/Table';
 // import data from '../../db/data.json';
@@ -12,6 +10,7 @@ function MainTable() {
   const [isCheck, setIsCheck] = useState(false);
 
   useEffect(()=>{
+    console.log(isCheck)
     fetch('http://localhost:3001/words')
     .then(res=>res.json())
     .then(data => {
