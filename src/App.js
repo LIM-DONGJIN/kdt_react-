@@ -1,14 +1,14 @@
-function App() {
+import Footer from "./components/layouts/Footer";
+import Header from "./components/layouts/Header";
+import Main from "./pages/Main";
 
-  const fruits = ['apple', 'mango', 'banana', 'melon'];
+function App() {
 
   return (
     <>
-    {
-      fruits.map((fruit, index) => (
-        <h3 key={index}>{fruit}</h3>
-      ))
-    }
+     <Header/>
+     <Main />
+     <Footer />
     </>
   );
 }
