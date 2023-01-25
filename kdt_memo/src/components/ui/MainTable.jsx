@@ -4,14 +4,16 @@ import Table from 'react-bootstrap/Table';
 // import data from '../../db/data.json';
 import WordList from './WordList';
 
-function MainTable() {
+
+function MainTable({dayId}) {
 
   const [data, setData] = useState();
   const [isCheck, setIsCheck] = useState(false);
 
   useEffect(()=>{
+    console.log(dayId)
     console.log(isCheck)
-    fetch('http://localhost:3001/words')
+    fetch(`http://localhost:3001/words?day=${dayId}`)
     .then(res=>res.json())
     .then(data => {
       console.log(data);

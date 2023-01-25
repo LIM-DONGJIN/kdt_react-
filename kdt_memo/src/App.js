@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/list" element={<WordPage />} />
+          <Route path="/list/:dayId" element={<WordPage />} />
           <Route path="/word" element={<CreateWord />} />
           <Route path="/day" element={<CreateDay />} />
         </Routes>
@@ -22,3 +22,4 @@ function App() {
 }
 
 export default App;
+

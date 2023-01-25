@@ -7,4 +7,4 @@ function DayList() {
   );
 }
 
-export default DayList;
+export default DayList;KDT_REACT-/kdt_memo/src/components/ui/WordForm.jsx
