@@ -1,0 +1,22 @@
+.myfooter {
+  background-color: bisque;
+  box-sizing: border-box;
+  padding: 0px 14px;
+  position: fixed;
+  height: 80px;
+  bottom: 0px;
+}
+
+.myfooter ul {
+  list-style: none;
+  display: flex;
+}
+
+.myfooter ul li {
+  width: 20vw;
+  box-sizing: border-box;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+

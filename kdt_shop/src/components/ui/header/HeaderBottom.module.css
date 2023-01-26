@@ -1,0 +1,25 @@
+.gnb ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.gnb ul li {
+  list-style: none;
+  padding: 5px 14px;
+  font-size: 0.9rem;
+}
+
+.gnb ul li a {
+  padding: 8px 0;
+  color: rgba(0,0,0,0.65);
+  text-decoration: none;
+}
+
+.active a{
+  color: #000 !important;
+  font-weight: bolder !important;
+  border-bottom: 3px solid #000;
+}

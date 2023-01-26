@@ -7,9 +7,11 @@ import ProductList from './components/pages/ProductList';
 import Wish from './components/pages/Wish';
 import Cart from './components/pages/Cart';
 
+import './App.css';
+
 function App() {
   return (
-    <div className='container'>
+    <div className='appWrap'>
       <BrowserRouter>
         <Header/>
         <Routes>
