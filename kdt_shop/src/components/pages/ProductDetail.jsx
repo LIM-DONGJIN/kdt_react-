@@ -8,7 +8,7 @@ function ProductDetail() {
 
   useEffect(() => {
     console.log(id);
-    fetch(`https://dummyjson.com/products/${id}`)
+    fetch(`http://localhost:3001/products/${id}`)
     .then(res => res.json())
     .then(data => {
       console.log(data);

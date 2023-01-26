@@ -5,7 +5,14 @@
 
 .productCard img {
   width: 100%;
+  border-radius: 5px;
   height: auto;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .cartBtn {
