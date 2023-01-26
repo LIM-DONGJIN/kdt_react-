@@ -146,6 +146,13 @@
       "kor": "병",
       "isDone": false,
       "id": 15
+    },
+    {
+      "day": 1,
+      "eng": "Book",
+      "kor": "책",
+      "isDone": false,
+      "id": 16
     }
   ]
 }
