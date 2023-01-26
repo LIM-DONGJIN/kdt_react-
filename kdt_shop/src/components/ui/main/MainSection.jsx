@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import ProductCard from './ProductCard';
+import style from './MainSection.module.css';
 
 function MainSection() {
 
@@ -18,7 +19,7 @@ function MainSection() {
   },[]);
 
   return ( 
-    <section className='mainSection'>
+    <section className={style.mainSection}>
       {
         productData && productData.map( product => (
           <ProductCard 
