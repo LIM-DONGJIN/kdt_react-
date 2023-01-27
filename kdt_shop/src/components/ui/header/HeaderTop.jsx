@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // css
 import style from './HeaderTop.module.css';
@@ -6,7 +6,12 @@ import style from './HeaderTop.module.css';
 import * as animationData from '../../../lottie/Cart.json';
 import Lottie from 'react-lottie';
 
+import { QtyContext } from '../../context/QtyContext';
+
 function HeaderTop() {
+
+  const contextData = useContext( QtyContext );
+  console.log(contextData)
 
   // lottie options  -- 이거 이해못했음
   const defaultOptions = {
@@ -22,16 +27,13 @@ function HeaderTop() {
   const userId = 1;
   const [searchWord, setSearchWord] = useState('');
   
-  const [cartQty, setCartQty] = useState(0);
-
-
   useEffect(() => {
     
     fetch(`http://localhost:3001/carts?userId=${userId}`)
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      setCartQty(data.length)
+      contextData.setCartQty(data.length);
     });
 
   },[userId]);
@@ -67,7 +69,7 @@ function HeaderTop() {
             width={60}
           />
         </Link>
-        <p className={style.qtyBadge}>{cartQty}</p>
+        <p className={style.qtyBadge}>{contextData.cartQty}</p>
       </div>
     </div>
    );

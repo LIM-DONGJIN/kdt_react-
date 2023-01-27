@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './ProductCard.module.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { QtyContext } from '../../context/QtyContext';
 
 function ProductCard({product}) {
 
+  const contextData = useContext( QtyContext );
   const userId = 1;
   const navigate = useNavigate();
 
@@ -20,6 +22,7 @@ function ProductCard({product}) {
     .then(res => {
       res.json();
       if(res.ok){
+        contextData.setCartQty(contextData.cartQty + 1)
         window.alert('Added to cart');
         navigate('/cart');
       }

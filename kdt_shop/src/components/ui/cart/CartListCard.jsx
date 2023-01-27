@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import style from './CartListCard.module.css';
+import { QtyContext } from '../../context/QtyContext';
 
 
 function CartListCard({cartData, delCheck, setDelCheck}) {
 
+  const contextData = useContext(QtyContext);
   const [cartObj, setCartObj] = useState(
     {
       id: cartData.id,
@@ -75,7 +77,7 @@ function CartListCard({cartData, delCheck, setDelCheck}) {
     }).then(res => {
       console.log(res)
       res.ok ? setDelCheck(!delCheck) : alert("삭제 실패")
-    })
+    }).then(contextData.setCartQty(contextData.cartQty - 1))
     .catch(err => console.log(err))
   }
 
