@@ -13,13 +13,21 @@ function Cart() {
     .then(res => res.json())
     .then(data => {
       console.log(data);
+      setCartDatas(data)
     });
 
   },[userId]);
 
   return ( 
     <div className={style.cartListWrap}>
-      <CartListCard />
+      {
+        cartDatas && cartDatas.map( cartData => (
+          <CartListCard 
+            key={cartData.id}
+            cartData={cartData}
+          />
+        ))
+      }
     </div>
   );
 }
