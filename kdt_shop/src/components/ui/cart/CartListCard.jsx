@@ -14,8 +14,10 @@ function CartListCard({cartData}) {
     }
   )
 
+  const url = `http://localhost:3001/products/${cartData.productId}`;
+
   useEffect(()=>{
-    fetch(`http://localhost:3001/products/${cartObj.id}`)
+    fetch(url)
     .then( res => res.json())
     .then( data => {
         setCartObj({ 
@@ -25,7 +27,7 @@ function CartListCard({cartData}) {
         productPrice: data.price
       })
     })
-  },[cartObj])
+  },[url])
 
   return ( 
     <>
