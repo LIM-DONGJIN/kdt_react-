@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import style from './CartListCard.module.css';
 
 
-function CartListCard({cartData}) {
+function CartListCard({cartData, delCheck, setDelCheck}) {
 
   const [cartObj, setCartObj] = useState(
     {
@@ -46,25 +46,37 @@ function CartListCard({cartData}) {
   }
 
   const handleQtyIncre = () => {
-
+    // state
     setCartObj({
         ...cartObj,
         qty: cartObj.qty + 1
     })
+    // database
     handleQtyPatch(cartObj.qty + 1);
      
   }
 
   const handleQtyDecre = () => {
-
+    // state
     if(cartObj.qty === 1) 
       return alert("최소 수량은 1개 입니다.");
     setCartObj({
       ...cartObj,
       qty: cartObj.qty - 1
     })
+    // database
     handleQtyPatch(cartObj.qty - 1);
 
+  }
+
+  const handleDelete = () => {
+    fetch(`http://localhost:3001/carts/${cartObj.id}`, {
+      method: "DELETE",
+    }).then(res => {
+      console.log(res)
+      res.ok ? setDelCheck(!delCheck) : alert("삭제 실패")
+    })
+    .catch(err => console.log(err))
   }
 
   return ( 
@@ -82,7 +94,7 @@ function CartListCard({cartData}) {
           <p>total price : {cartObj.productPrice * cartObj.qty} $</p>
         </div>
         <div>
-          <button>삭제</button>
+          <button onClick={handleDelete}>삭제</button>
         </div>
       </div>
       <hr />
