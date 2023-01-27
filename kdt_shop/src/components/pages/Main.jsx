@@ -1,10 +1,13 @@
 import React from 'react';
 import MainSection from '../ui/main/MainSection';
 
-function Main() {
+function Main({checker, setChecker}) {
   return ( 
     <div className='mainWrap'>
-      <MainSection />
+      <MainSection 
+        checker={checker}
+        setChecker={setChecker}
+      />
     </div>
    );
 }

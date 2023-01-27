@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -10,12 +12,24 @@ import Cart from './components/pages/Cart';
 import './App.css';
 
 function App() {
+  const [checker, setChecker] = useState(false);
+
+  useEffect(() => {
+    console.log(checker)
+  },[checker])
+
   return (
     <div className='appWrap'>
       <BrowserRouter>
-        <Header/>
+        <Header 
+          checker={checker}
+          setChecker={setChecker}
+        />
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={<Main 
+            checker={checker}
+            setChecker={setChecker}
+          />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/wish' element={<Wish />} />
           <Route path='/product' element={<ProductList />} />

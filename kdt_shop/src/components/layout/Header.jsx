@@ -2,10 +2,15 @@ import React from 'react';
 import HeaderBottom from '../ui/header/HeaderBottom';
 import HeaderTop from '../ui/header/HeaderTop';
 
-function Header() {
+function Header({checker, setChecker}) {
+  
+
   return ( 
     <header>
-      <HeaderTop />
+      <HeaderTop
+        checker={checker}
+        setChecker={setChecker}
+      />
       <HeaderBottom />
     </header>
    );

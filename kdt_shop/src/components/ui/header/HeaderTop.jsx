@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // css
 import style from './HeaderTop.module.css';
@@ -6,7 +6,7 @@ import style from './HeaderTop.module.css';
 import * as animationData from '../../../lottie/Cart.json';
 import Lottie from 'react-lottie';
 
-function HeaderTop() {
+function HeaderTop({checker, setChecker}) {
 
   // lottie options  -- 이거 이해못했음
   const defaultOptions = {
@@ -19,7 +19,23 @@ function HeaderTop() {
   };
 
   // state for search word
+  const userId = 1;
   const [searchWord, setSearchWord] = useState('');
+  
+  const [cartQty, setCartQty] = useState(0);
+
+
+  useEffect(() => {
+    
+    fetch(`http://localhost:3001/carts?userId=${userId}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      setCartQty(data.length)
+    });
+
+  },[userId, checker]);
+
 
   const handleSearch = () => {
     console.log('찾아주세요~~~', searchWord);
@@ -50,6 +66,7 @@ function HeaderTop() {
             height={60}
             width={60}
           />
+          {cartQty}
         </Link>
       </div>
     </div>
