@@ -7,6 +7,7 @@ function CartListCard({cartData}) {
       id: cartData.id,
       userId: cartData.userId,
       productId: cartData.productId,
+      productImg: "",
       productName: "",
       productPrice: 0,
       qty: cartData.qty,
@@ -19,6 +20,7 @@ function CartListCard({cartData}) {
     .then( data => {
         setCartObj({ 
         ...cartObj, 
+        productImg: data.thumbnail,
         productName: data.title,
         productPrice: data.price
       })
@@ -28,16 +30,16 @@ function CartListCard({cartData}) {
   return ( 
     <>
      <div className='cartListCard'>
-        <img src="" alt="" />
+        <img src={cartObj.productImg} alt={cartObj.productName} />
         <div>
-          <h3>상품명</h3>
-          <p>price</p>
+          <h3>{cartObj.productName} </h3>
+          <p>price : {cartObj.productPrice}</p>
           <div className='qtyHandler'>
             <button>-</button>
-            <p>1</p>
+            <p>{cartObj.qty}</p>
             <button>+</button>
           </div>
-          <p>total price</p>
+          <p>total price : {cartObj.productPrice * cartObj.qty} $</p>
         </div>
         <div>
           <button>삭제</button>
