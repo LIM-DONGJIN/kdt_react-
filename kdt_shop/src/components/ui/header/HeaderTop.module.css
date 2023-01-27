@@ -31,3 +31,9 @@
 .cartIcon {
   width: 15vw;
 }
+
+.cartIcon::before p {
+  position: relative;
+  top: 0px;
+  z-index: 110;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import style from './ProductDetail.module.css';
 
 function ProductDetail() {
 
@@ -15,14 +16,13 @@ function ProductDetail() {
       setProduct(data)
     })
     .catch(err => console.log(err))
-
-  },[]);
+  },[id]);
 
   return ( 
     <div>
       {
         product && (
-          <>
+          <div className={style.productWrap}>
             <img src={product.thumbnail} alt={product.description}/>
             <h2>{product.title}</h2>
             <p>{product.description}</p>
@@ -42,7 +42,7 @@ function ProductDetail() {
                 />
               ))
             }
-          </>
+          </div>
         )
       }
       

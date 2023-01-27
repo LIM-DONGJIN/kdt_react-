@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Lottie from 'react-lottie';
+// css
 import style from './HeaderTop.module.css';
+// lottie
 import * as animationData from '../../../lottie/Cart.json';
+import Lottie from 'react-lottie';
 
 function HeaderTop() {
 
+  // lottie options  -- 이거 이해못했음
   const defaultOptions = {
     loop: true,
     autoplay: true, 
@@ -15,30 +18,32 @@ function HeaderTop() {
     }
   };
 
+  // state for search word
   const [searchWord, setSearchWord] = useState('');
-  const searchRef = useRef('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(e.key === 'Enter') {
-      console.log('Enter key pressed');
-    }
+  const handleSearch = () => {
+    console.log('찾아주세요~~~', searchWord);
+    fetch(`https://dummyjson.com/products/search?q=${searchWord}`)
+    .then(res => res.json())
+    .then(data => console.log(data));
   }
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setSearchWord(e.target.value);
+  // search word change handler
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setSearchWord(event.target.value);
   }
 
   return ( 
     <div className={style.headerTopWrap}>
       <h1 className={style.logo}><Link to={'/'}>SSG.COM</Link></h1>
-      <form className={style.search} onSubmit={handleSubmit}>
+      <div className={style.search}>
         <input type="text"
           onChange={handleChange}
+          onKeyDown={(e)=> e.key === 'Enter' && handleSearch()}
           defaultValue={searchWord}
         />
-      </form>
+      </div>
       <div className={style.cartIcon}>
         <Link to='cart'>
           <Lottie options={defaultOptions}

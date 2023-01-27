@@ -1,7 +1,10 @@
 import React from 'react';
-import style from './HeaderBottom.module.css';
-import { gnbMenu } from '../../../data/gnbMenu';
 import { Link , useLocation } from 'react-router-dom';
+// css
+import style from './HeaderBottom.module.css';
+// menuData import
+import { gnbMenu } from '../../../data/gnbMenu';
+
 
 function HeaderBottom() {
 

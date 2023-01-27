@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import CartListCard from '../ui/cart/CartListCard';
+import style from './Cart.module.css';
 
 function Cart() {
 
   const userId = 1;
-  const [cartDatas, setCartDatas] = useState();
+  const [cartDatas, setCartDatas] = useState([]);
 
   useEffect(() => {
 
@@ -12,13 +14,14 @@ function Cart() {
     .then(data => {
       console.log(data);
     });
-  },[]);
+
+  },[userId]);
 
   return ( 
-    <>
-    
-    </>
-   );
+    <div className={style.cartListWrap}>
+      <CartListCard />
+    </div>
+  );
 }
 
 export default Cart;

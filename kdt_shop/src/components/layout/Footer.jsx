@@ -12,7 +12,7 @@ function Footer() {
             footerMenu.map( menu => (
               <li key={menu.id}>
                 <Link to={menu.link}>
-                  <img src={menu.icon} />
+                  <img src={menu.icon} alt=""/>
                   <p>{menu.name}</p>
                 </Link>
               </li>
