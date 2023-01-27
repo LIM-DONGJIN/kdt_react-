@@ -31,6 +31,42 @@ function CartListCard({cartData}) {
     })
   },[url])
 
+  const handleQtyPatch = (qty) => {
+    fetch(`http://localhost:3001/carts/${cartObj.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        qty: qty
+      })
+    }).then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+  }
+
+  const handleQtyIncre = () => {
+
+    setCartObj({
+        ...cartObj,
+        qty: cartObj.qty + 1
+    })
+    handleQtyPatch(cartObj.qty + 1);
+     
+  }
+
+  const handleQtyDecre = () => {
+
+    if(cartObj.qty === 1) 
+      return alert("최소 수량은 1개 입니다.");
+    setCartObj({
+      ...cartObj,
+      qty: cartObj.qty - 1
+    })
+    handleQtyPatch(cartObj.qty - 1);
+
+  }
+
   return ( 
     <>
      <div className={style.cartListCard}>
@@ -39,9 +75,9 @@ function CartListCard({cartData}) {
           <h3>{cartObj.productName} </h3>
           <p>price : {cartObj.productPrice}</p>
           <div className={style.qtyHandler}>
-            <button>-</button>
+            <button onClick={handleQtyDecre}>-</button>
             <p>{cartObj.qty}</p>
-            <button>+</button>
+            <button onClick={handleQtyIncre}>+</button>
           </div>
           <p>total price : {cartObj.productPrice * cartObj.qty} $</p>
         </div>
