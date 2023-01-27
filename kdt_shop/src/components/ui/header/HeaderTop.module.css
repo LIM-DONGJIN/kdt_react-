@@ -37,3 +37,15 @@
   top: 0px;
   z-index: 110;
 }
+
+.qtyBadge {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+  background-color: rgb(57, 57, 57);
+  color: #fff;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './ProductCard.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-function ProductCard({product, checker, setChecker}) {
+function ProductCard({product}) {
 
   const userId = 1;
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ function ProductCard({product, checker, setChecker}) {
     .then(res => {
       res.json();
       if(res.ok){
-        setChecker(!checker);
         window.alert('Added to cart');
         navigate('/cart');
       }

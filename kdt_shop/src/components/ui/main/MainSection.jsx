@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import ProductCard from './ProductCard';
 import style from './MainSection.module.css';
 
-function MainSection({checker, setChecker}) {
+function MainSection() {
 
   const [productData, setProductData] = useState([]);
 
@@ -25,8 +25,6 @@ function MainSection({checker, setChecker}) {
           <ProductCard 
             key={product.id}
             product={product}
-            checker={checker}
-            setChecker={setChecker}
           />
         ))
       }

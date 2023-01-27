@@ -6,7 +6,7 @@ import style from './HeaderTop.module.css';
 import * as animationData from '../../../lottie/Cart.json';
 import Lottie from 'react-lottie';
 
-function HeaderTop({checker, setChecker}) {
+function HeaderTop() {
 
   // lottie options  -- 이거 이해못했음
   const defaultOptions = {
@@ -34,7 +34,7 @@ function HeaderTop({checker, setChecker}) {
       setCartQty(data.length)
     });
 
-  },[userId, checker]);
+  },[userId]);
 
 
   const handleSearch = () => {
@@ -66,8 +66,8 @@ function HeaderTop({checker, setChecker}) {
             height={60}
             width={60}
           />
-          {cartQty}
         </Link>
+        <p className={style.qtyBadge}>{cartQty}</p>
       </div>
     </div>
    );
