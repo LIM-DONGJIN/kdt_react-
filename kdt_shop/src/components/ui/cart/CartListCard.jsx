@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import style from './CartListCard.module.css';
+
 
 function CartListCard({cartData}) {
 
@@ -31,12 +33,12 @@ function CartListCard({cartData}) {
 
   return ( 
     <>
-     <div className='cartListCard'>
+     <div className={style.cartListCard}>
         <img src={cartObj.productImg} alt={cartObj.productName} />
-        <div>
+        <div className={style.info}>
           <h3>{cartObj.productName} </h3>
           <p>price : {cartObj.productPrice}</p>
-          <div className='qtyHandler'>
+          <div className={style.qtyHandler}>
             <button>-</button>
             <p>{cartObj.qty}</p>
             <button>+</button>
@@ -47,6 +49,7 @@ function CartListCard({cartData}) {
           <button>삭제</button>
         </div>
       </div>
+      <hr />
     </> 
   );
 }
